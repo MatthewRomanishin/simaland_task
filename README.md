@@ -1,3 +1,6 @@
+# Клонируем репозиторий
+- `git clone https://github.com/MatthewRomanishin/simaland_task.git`  
+- `pip install -r requirements.txt`  
 # Создаем DB
 
 - `sudo docker volume create simaland_test`  
