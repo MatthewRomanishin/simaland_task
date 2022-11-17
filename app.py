@@ -68,14 +68,15 @@ async def update(request):
         token = data[f'{parsed_fields[-1]}']
         fields_to_update = parsed_fields[1:-1]
 
-        assert len(fields_to_update) != None
+        assert len(fields_to_update) != 0
 
         current_id = decode_token(token)
         permission = get_permission_by_id(current_id)
         if permission:
             for field in fields_to_update:
                 query = f"UPDATE users SET {field}='{data[f'{field}']}' WHERE login='{login_to_update}';"
-                make_request_wo_response(db_pool, query)
+                resp = make_request_wo_response(db_pool, query)
+                return resp
            
         else:
             return web.json_response(text='\nForbidden', status=401)

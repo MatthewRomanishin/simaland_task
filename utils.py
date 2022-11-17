@@ -20,6 +20,7 @@ def make_request(db_pool, query):
 def make_request_wo_response(db_pool, query):
     with db_pool.connect() as connection:
         connection.execute(query)
+        return web.json_response(text=f'\nUpdated user', status=200)
 
 def get_password(db_pool, login):
     query = f"SELECT login, password FROM public.users WHERE login = '{login}';"
@@ -62,11 +63,14 @@ def get_permission_by_id(id):
         data = connection.execute(query)
         for i in data:
             permission = i[0]
+
+        print(permission)
         
         if permission == 'administrator':
             permission = True
         else:
             permission = False 
+        return permission
 
 def check_correct_password(login, password):
     user_password = get_password(db_pool, login)
