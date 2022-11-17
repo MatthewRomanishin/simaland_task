@@ -4,7 +4,7 @@
 # Создаем DB
 
 - `sudo docker volume create simaland_test`  
-- `sudo docker run -e POSTGRES_PASSWORD=forum_password -e POSTGRES_USER=forum_user -p 5432:5432 --name postgres --mount source=postgres-data,target=/var/lib/postgresql  -d postgres:11`  
+- `sudo docker run -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin -p 5432:5432 --name simaland_test --mount source=simaland_test,target=/var/lib/postgresql  -d postgres:11`    
 - `sudo docker exec -it simaland_test psql -U admin`  
 - `CREATE DATABASE users_db;`  
 - `\q`  
