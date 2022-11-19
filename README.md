@@ -8,6 +8,7 @@
 - `sudo docker exec -it simaland_test psql -U admin`  
 - `CREATE DATABASE users_db;`  
 - `\q`  
+- `python create_databases.py`
 
 # RUN
 `python app.py`  
